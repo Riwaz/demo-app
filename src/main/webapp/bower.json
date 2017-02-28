@@ -1,0 +1,21 @@
+{
+  "name": "todo",
+  "description": "Application for monitoring thing you need to do.",
+  "main": "",
+  "keywords": [
+    "todo"
+  ],
+  "authors": [
+    "Tomas Arlt"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "private": true,
+  "dependencies": {
+    "uikit": "https://github.com/uikit/uikit.git#^2.27.2",
+    "angular": "https://github.com/angular/bower-angular.git#^1.6.2",
+    "less": "https://github.com/less/less.js.git#^2.7.2",
+    "less-flexbox": "https://github.com/jackrabbitsgroup/less-flexbox.git#^1.0.2",
+    "jquery-date-range-picker": "https://github.com/longbill/jquery-date-range-picker.git#^0.14.3"
+  }
+}

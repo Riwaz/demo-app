@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <link rel="stylesheet" href="bower_components/jquery-date-range-picker/dist/daterangepicker.min.css"/>
+        <link rel="stylesheet" href="bower_components/uikit/css/uikit.min.css"/> 
+        <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower_components/uikit/js/uikit.min.js"></script>
+        <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+        <script type="text/javascript" src="bower_components/less/dist/less.min.js"></script>
+        <script type="text/javascript" src="bower_components/jquery-date-range-picker/dist/jquery.daterangepicker.min.js"></script>
+        
+    </head>
+    <body>
+        
+        <script>
+            var app = angular.module("myShoppingList", []); 
+            app.controller("myCtrl", function($scope) {
+            $scope.products = ["Milk", "Bread", "Cheese"];
+        });
+        </script>
+        
+        <div ng-app="myShoppingList" ng-controller="myCtrl">
+        <ul>
+            <li ng-repeat="x in products">{{x}}</li>
+        </ul>
+        </div>
+        
+        
+        
+        
+    </body>
+</html>
