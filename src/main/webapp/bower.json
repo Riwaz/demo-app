@@ -16,5 +16,6 @@
     "less": "https://github.com/less/less.js.git#^2.7.2",
     "angular-route": "https://github.com/angular/bower-angular-route.git#^1.6.4",
     "uikit": "https://github.com/uikit/uikit.git#3.0.0-beta.25"
+    "angularjs-datepicker": "https://github.com/720kb/angular-datepicker.git#^2.1.21"
   }
 }
