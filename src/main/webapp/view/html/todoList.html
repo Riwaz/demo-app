@@ -1,0 +1,41 @@
+<div class="uk-flex-middle uk-flex-row uk-grid" id="header">
+    <div class="uk-width-2-5">
+        <div class="datepicker">
+            <input ng-model="dateF" class="uk-input uk-form-width-small uk-form-small" type="text" placeholder="Filter by deadline"/>
+        </div>
+    </div>
+    <div class="uk-width-2-5">
+        <h3>Todo-list</h3>
+    </div>
+     <div class="uk-width-1-5">
+        <a href="#!/todos/create" class="uk-button uk-button-primary" id="new">New</a>
+    </div>
+</div>
+
+<div ng-show='!dataAvabillity()' class="uk-margin uk-flex-middle uk-card uk-card-body uk-card-small uk-card-default uk-card-hover">
+    <p>You have finished all your todos! :)</p>
+</div>
+<div ng-repeat="todo in todoList | dateFilter : dateF" ng-show='dataAvabillity()'
+        class="uk-margin uk-flex-middle uk-card uk-card-body uk-card-small uk-card-default uk-card-hover">
+    <div class="uk-card-badge uk-label">{{getBadge(todo.resolved)}}</div>
+    <div>
+        <h3 class="uk-card-title">{{todo.name}}</h3>
+        <p>{{todo.description}}</p>
+        <div class="dates">Deadline: {{todo.resolveUntil.dayOfMonth + ". " + todo.resolveUntil.monthValue + ". " + 
+            todo.resolveUntil.year}}</div>
+        
+        <div class='uk-grid'>
+            <div class="uk-width-1-3 dates">
+                Created on: {{todo.createdOn.dayOfMonth + ". " + todo.createdOn.monthValue + ". " + 
+                todo.createdOn.year}}
+            </div>
+            <div class="uk-width-1-3"></div>
+            <div class="uk-width-1-3 uk-margin-auto-left">
+                <button ng-show='!todo.resolved' ng-click='finishTodo(todo.id)' class="butt uk-button uk-button-text" type='button'>Finish</button>
+                <a href="{{'#!/todos/' + todo.id + '/edit'}}" ng-click="clickEdit(todo)" class="butt uk-button uk-button-text uk-margin-small-left">Edit</a>
+                <button ng-click='removeTodo(todo)' class="butt uk-button uk-button-text uk-margin-small-left">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+

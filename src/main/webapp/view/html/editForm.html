@@ -1,0 +1,37 @@
+<div ng-init="nameI = editedTodo.name; descriptionI = editedTodo.description">
+    <form class="uk-form-stacked" ng-submit="editTodo()">
+        <fieldset class="uk-fieldset">
+        <legend class="uk-legend">Edit Todo</legend>
+
+            <div class="uk-margin">
+                <label class="uk-form-label" for="todoName">Name:</label>
+                <div class="uk-form-controls">
+                    <input ng-model="nameI" ng-value='editedTodo.name' class="uk-input" id="todoName" type="text" required>
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label" for="todoDesc">Description:</label>
+                <div class="uk-form-controls">
+                    <textarea ng-model="descriptionI" ng-value='editedTodo.description' class="uk-textarea" id="todoDesc" required></textarea>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label" for="todoDate">Date:</label>
+                <div class="uk-form-controls">
+                    <div class="datepicker">
+                        <input class="uk-input" ng-model="dateI" ng-value='editedDate' id="todoDate" type="text" placeholder="Enter end date" required/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-margin-large-top">
+                 <div class="uk-form-controls submit">
+                    <button type="submit" id="create" class="uk-button uk-button-primary">Edit</button>
+                </div>        
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+            

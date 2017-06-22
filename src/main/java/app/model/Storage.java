@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Component;
-import app.model.Todo;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 
 @Component
 public class Storage {
@@ -16,13 +16,13 @@ public class Storage {
     public Storage()
     {
         this.storage = new HashMap<>(); 
-        this.index = 0;
-        Todo x = new Todo(0, LocalDateTime.MIN, LocalDateTime.MIN, "dsasdas"); 
-        this.addTodo(x); 
+        this.index = 1; 
     }
     
     public boolean addTodo(Todo obj)
     {
+        obj.setId(index);
+        obj.setCreatedOn(LocalDateTime.now());
         if(this.storage.get(obj.getId()) == null)
         {
             this.storage.put(obj.getId(), obj);
@@ -32,26 +32,53 @@ public class Storage {
         return false;
     }
     
-    public void removeTodo(Todo obj)
+    public void removeTodo(int id)
     {
-        this.storage.remove(obj.getId(), obj);
+        Todo todo = storage.get(id); 
+        this.storage.remove(id, todo);
     }
     
-    public void updateTodo(Todo newObj)
+    public void finishTodo(int id)
     {
-        this.storage.replace(newObj.getId(), newObj);
+        Todo todo = this.getTodo(id);
+        todo.setResolved(true);
+        this.storage.replace(id, todo); 
+    }
+    
+    public void updateTodo(Todo newTodo, int id)
+    {
+        Todo old = this.getTodo(id);
+        old.setName(newTodo.getName());
+        old.setDescription(newTodo.getDescription());
+        old.setResolveUntil(newTodo.getResolveUntil());
+        old.setResolved(newTodo.isResolved());
+        this.storage.replace(old.getId(), old);
     }
     
     public List<Todo> getTodos()
     {
         Todo[] array = new Todo[this.storage.values().size()];
-        List<Todo> list = new ArrayList<>(); 
+        List<Todo> todos = new ArrayList<>(); 
         this.storage.values().toArray(array);
         for(int i = 0; i < array.length; i++)
         {
-            list.add(array[i]); 
+            todos.add(array[i]); 
         }
-        return list;
+        
+        List<Todo> comparedTodos = new ArrayList<>(); 
+        Comparator<Todo> byEndDate = (t1, t2) -> t1.getResolveUntil().compareTo(t2.getResolveUntil());
+        Comparator<Todo> byCreateDate = (t1, t2) -> t1.getCreatedOn().compareTo(t2.getCreatedOn());
+        
+        todos.stream().sorted(byEndDate.thenComparing(byCreateDate)).
+                forEach(todo -> comparedTodos.add(todo));
+        
+        return comparedTodos;
+        
+    }
+    
+    public Todo getTodo(int key)
+    {
+        return this.storage.get(key); 
     }
 
     public int getIndex() {

@@ -1,0 +1,73 @@
+@appWidth: 900px;
+
+.padding(@size)
+{
+    padding: @size;
+}
+
+#window
+{
+    width: @appWidth;
+    margin-left: auto;
+    margin-right: auto;
+    .padding(10px)
+}
+
+#header
+{
+    margin-bottom: 20px;
+    .padding(20px)
+}
+
+.uk-card
+{
+    .butt:hover
+    {
+        font-size: 17px; 
+    }
+
+    .dates
+    {
+        font-style: italic;
+    }
+
+}
+
+.submit
+{
+    width: 120px;
+    height: 60px;
+    margin-left: (@appWidth / 2) - 120;
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+    transition: width 2s, height 2s, transform 2s;
+    
+    .uk-button
+    {
+        width: 120px;
+        height: 60px;
+        
+        -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+        transition: width 2s, height 2s, background-color 2s, transform 2s;
+    }
+    
+    .uk-button:hover
+    {
+        background-color: #32d296;
+        width: 240px;
+        height: 120px;
+        -webkit-transform: rotate(360deg); 
+        transform: rotate(360deg);
+    }
+    
+}
+
+.submit:hover
+{
+    width: 240px;
+    height: 120px;
+    -webkit-transform: rotate(360deg); 
+    transform: rotate(360deg);
+}
+
+
+
